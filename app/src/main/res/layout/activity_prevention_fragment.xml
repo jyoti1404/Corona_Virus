@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PreventionFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@+id/steps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="5 Steps to Say No to Corona"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:layout_margin="10dp" />
+
+            <LinearLayout
+                android:id="@+id/linearlayout1"
+                android:layout_margin="10dp"
+                android:layout_width="500dp"
+                android:layout_height="130dp"
+                android:layout_below="@+id/steps"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/hands"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:padding="5dp"
+                    android:text="Wash your hands \n regularly for \n 20 sec, with soap \n and water or alcohol \n based hand sanitizer."
+                    android:textColor="#000"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlayout2"
+                android:layout_margin="10dp"
+                android:layout_width="500dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/linearlayout1"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/mask"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:layout_margin="10dp"
+                    android:padding="5dp"
+                    android:text="Cover your nose \n and mouth with a \n disposable tissue or \n flexed elbow when you \n cough or sneeze"
+                    android:textColor="#000"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlayout3"
+                android:layout_margin="10dp"
+                android:layout_width="500dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/linearlayout2"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/isolate"/>
+
+                <TextView
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:layout_margin="10dp"
+                    android:text="Stay home and self-isolate \n from others \n in the household if you \n feel unwell"
+                    android:textColor="#000"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linearlayout4"
+                android:layout_margin="10dp"
+                android:layout_width="500dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/linearlayout3"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/news"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="111dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1.0"
+                    android:padding="5dp"
+                    android:text="Stay informed by watching \n news and follow the \n recommended parctices"
+                    android:textAlignment="center"
+                    android:textColor="#000" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlayout5"
+                android:layout_margin="10dp"
+                android:layout_width="500dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/linearlayout4"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/medical" />
+
+                <TextView
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:layout_margin="10dp"
+                    android:text="If you have fever, \n cough and difficulty \n breathing seek medical \n care early"
+                    android:textColor="#000"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

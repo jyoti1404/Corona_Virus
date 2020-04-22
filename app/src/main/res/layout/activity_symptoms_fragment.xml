@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SymptomsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cough_img"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/cough"/>
+
+            <TextView
+                android:id="@+id/cough_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:text="COUGH"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/cough_img"
+                android:layout_marginBottom="30dp"
+                android:layout_centerHorizontal="true"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_below="@+id/cough_text"
+                android:id="@+id/fever_img"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/fever"/>
+
+            <TextView
+                android:id="@+id/fever_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:text="FEVER"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/fever_img"
+                android:layout_marginBottom="30dp"
+                android:layout_centerHorizontal="true"/>
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_below="@+id/fever_text"
+                android:id="@+id/cold_img"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/cold"/>
+
+            <TextView
+                android:id="@+id/cold_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:text="COLD"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/cold_img"
+                android:layout_marginBottom="30dp"
+                android:layout_centerHorizontal="true"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_below="@+id/cold_text"
+                android:id="@+id/nose_img"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/nose"/>
+
+            <TextView
+                android:id="@+id/nose_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:text="RUNNY NOSE"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/nose_img"
+                android:layout_marginBottom="30dp"
+                android:layout_centerHorizontal="true"/>
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_below="@+id/nose_text"
+                android:id="@+id/tiredness_img"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/tiredness"/>
+
+            <TextView
+                android:id="@+id/tiredness_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:text="TIREDNESS"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/tiredness_img"
+                android:layout_marginBottom="30dp"
+                android:layout_centerHorizontal="true"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_below="@+id/tiredness_text"
+                android:id="@+id/breathing_img"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/breath"/>
+
+            <TextView
+                android:id="@+id/breathing_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:text="DIFFICULTY IN BREATHING (severe)"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/breathing_img"
+                android:layout_marginBottom="30dp"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
