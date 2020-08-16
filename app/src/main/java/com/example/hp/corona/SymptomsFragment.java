@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -11,10 +12,12 @@ public class SymptomsFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        getActivity().setTitle("Symptoms");
         //Returning the layout file after inflating
         //Change R.layout.tab1 in you classes
         return inflater.inflate(R.layout.activity_symptoms_fragment, container, false);
     }
+
 
   /*      private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";

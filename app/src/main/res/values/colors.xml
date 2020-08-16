@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#D81B60</color>
     <color name="divider_color">#FFF</color>
-    <color name="cell_backgroung_color">#000000</color>
+    <color name="set_backgroung_color">#000000</color>
+    <color name="headings">#FFFFFF</color>
 </resources>

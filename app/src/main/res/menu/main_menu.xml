@@ -10,7 +10,7 @@
          android:title="About Us" />
 
     <item
-        android:id="@+id/feedback"
-        android:title="Help" />
+        android:id="@+id/faq"
+        android:title="FAQ" />
 
 </menu>

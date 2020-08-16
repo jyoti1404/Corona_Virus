@@ -87,9 +87,9 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(intent1);
                 finish();
                 break;
-            case R.id.feedback:
-                Toast.makeText(Dashboard.this,"Feedback",Toast.LENGTH_SHORT).show();
-                Intent intent2 = new Intent(Dashboard.this,Feedback.class);
+            case R.id.faq:
+                Toast.makeText(Dashboard.this,"FAQ",Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(Dashboard.this,Faq.class);
                 startActivity(intent2);
                 finish();
                 break;

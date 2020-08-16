@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="505dp"
     tools:context=".PreventionFragment">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="505dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -47,7 +47,8 @@
                     android:padding="5dp"
                     android:text="Wash your hands \n regularly for \n 20 sec, with soap \n and water or alcohol \n based hand sanitizer."
                     android:textColor="#000"
-                    android:textAlignment="center"/>
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
@@ -74,7 +75,8 @@
                     android:padding="5dp"
                     android:text="Cover your nose \n and mouth with a \n disposable tissue or \n flexed elbow when you \n cough or sneeze"
                     android:textColor="#000"
-                    android:textAlignment="center"/>
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
@@ -101,7 +103,8 @@
                     android:layout_margin="10dp"
                     android:text="Stay home and self-isolate \n from others \n in the household if you \n feel unwell"
                     android:textColor="#000"
-                    android:textAlignment="center"/>
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
@@ -128,7 +131,8 @@
                     android:layout_weight="1.0"
                     android:padding="5dp"
                     android:text="Stay informed by watching \n news and follow the \n recommended parctices"
-                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:textColor="#000" />
 
             </LinearLayout>
@@ -156,7 +160,8 @@
                     android:layout_margin="10dp"
                     android:text="If you have fever, \n cough and difficulty \n breathing seek medical \n care early"
                     android:textColor="#000"
-                    android:textAlignment="center"/>
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
 
             </LinearLayout>
 

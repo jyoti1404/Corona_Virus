@@ -1,32 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#03355b"
-    android:orientation="vertical"
-    tools:context=".TableFragment">
+<ScrollView android:id="@+id/Sview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <HorizontalScrollView
-        android:layout_width="fill_parent"
+        android:id="@+id/hview"
+        android:layout_width="match_parent"
         android:layout_height="fill_parent">
 
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            <RelativeLayout
 
-            <TableLayout
-                android:id="@+id/table"
-                android:layout_width="fill_parent"
-                android:layout_height="500dp"
-                android:orientation="horizontal"
-                android:stretchColumns="*"
-                android:divider="@drawable/divider_list"
-                android:showDividers="middle">
+                android:id="@+id/RelativeLayout1"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="505dp">
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TableRow
+                    <TableLayout
+                        android:id="@+id/table"
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="505dp"
+                        android:layout_centerHorizontal="true" >
+
+
+                    </TableLayout>
+                </ScrollView>
+
+
+            </RelativeLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+
+<!--                <TableRow
                     android:id="@+id/row_names"
                     android:background="#fff"
                     android:divider="@color/divider_color"
@@ -1962,11 +1972,4 @@
                         android:textSize="15dp" />
 
 
-                </TableRow>
-
-            </TableLayout>
-
-        </ScrollView>
-    </HorizontalScrollView>
-
-</LinearLayout>
+                </TableRow>    -->

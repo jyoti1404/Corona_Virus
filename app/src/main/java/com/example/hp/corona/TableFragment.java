@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Message;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.style.TypefaceSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.collection.LLRBNode;
+import com.squareup.okhttp.Address;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -57,169 +60,21 @@ public class TableFragment extends Fragment {
     String searchAPI = "https://api.covid19india.org/data.json";
     ProgressDialog progressDialog;
     TableLayout t1;
+    int i;
     static ArrayList<AllExistingData> arrayList;
-    FirebaseDatabase database;
-    DatabaseReference databaseReference;
+
 //    public static TextView st1, ct1, at1, rt1, dt1, st2, ct2, at2, rt2, dt2, st3, ct3, at3, rt3, dt3, st4, ct4, at4, rt4, dt4, st5, ct5, at5, rt5, dt5,
-  //          st6, ct6, at6, rt6, dt6, st7, ct7, at7, rt7, dt7, st8, ct8, at8, rt8, dt8, st9, ct9, at9, rt9, dt9, st10, ct10, at10, rt10, dt10, st11, ct11, at11, rt11, dt11,
-  //          st12, ct12, at12, rt12, dt12, st13, ct13, at13, rt13, dt13, st14, ct14, at14, rt14, dt14, st15, ct15, at15, rt15, dt15, st16, ct16, at16, rt16, dt16,
-   //         st17, ct17, at17, rt17, dt17, st18, ct18, at18, rt18, dt18, st19, ct19, at19, rt19, dt19, st20, ct20, at20, rt20, dt20, st21, ct21, at21, rt21, dt21, st22, ct22, at22, rt22, dt22,
-   //         st23, ct23, at23, rt23, dt23, st24, ct24, at24, rt24, dt24, st25, ct25, at25, rt25, dt25, st26, ct26, at26, rt26, dt26, st27, ct27, at27, rt27, dt27,
-   //         st28, ct28, at28, rt28, dt28, st29, ct29, at29, rt29, dt29, st30, ct30, at30, rt30, dt30;
+    //          st6, ct6, at6, rt6, dt6, st7, ct7, at7, rt7, dt7, st8, ct8, at8, rt8, dt8, st9, ct9, at9, rt9, dt9, st10, ct10, at10, rt10, dt10, st11, ct11, at11, rt11, dt11,
+    //          st12, ct12, at12, rt12, dt12, st13, ct13, at13, rt13, dt13, st14, ct14, at14, rt14, dt14, st15, ct15, at15, rt15, dt15, st16, ct16, at16, rt16, dt16,
+    //         st17, ct17, at17, rt17, dt17, st18, ct18, at18, rt18, dt18, st19, ct19, at19, rt19, dt19, st20, ct20, at20, rt20, dt20, st21, ct21, at21, rt21, dt21, st22, ct22, at22, rt22, dt22,
+    //         st23, ct23, at23, rt23, dt23, st24, ct24, at24, rt24, dt24, st25, ct25, at25, rt25, dt25, st26, ct26, at26, rt26, dt26, st27, ct27, at27, rt27, dt27,
+    //         st28, ct28, at28, rt28, dt28, st29, ct29, at29, rt29, dt29, st30, ct30, at30, rt30, dt30;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.activity_tablefragment, container, false);
-     /*   st1 = view.findViewById(R.id.stext1);
-        st2 = view.findViewById(R.id.stext2);
-        st3 = view.findViewById(R.id.stext3);
-        st4 = view.findViewById(R.id.stext4);
-        st5 = view.findViewById(R.id.stext5);
-        st6 = view.findViewById(R.id.stext6);
-        st7 = view.findViewById(R.id.stext7);
-        st8 = view.findViewById(R.id.stext8);
-        st9 = view.findViewById(R.id.stext9);
-        st10 = view.findViewById(R.id.stext10);
-        st11 = view.findViewById(R.id.stext11);
-        st12 = view.findViewById(R.id.stext12);
-        st13 = view.findViewById(R.id.stext13);
-        st14 = view.findViewById(R.id.stext14);
-        st15 = view.findViewById(R.id.stext15);
-        st16 = view.findViewById(R.id.stext16);
-        st17 = view.findViewById(R.id.stext17);
-        st18 = view.findViewById(R.id.stext18);
-        st19 = view.findViewById(R.id.stext19);
-        st20 = view.findViewById(R.id.stext20);
-        st21 = view.findViewById(R.id.stext21);
-        st22 = view.findViewById(R.id.stext22);
-        st23 = view.findViewById(R.id.stext23);
-        st24 = view.findViewById(R.id.stext24);
-        st25 = view.findViewById(R.id.stext25);
-        st26 = view.findViewById(R.id.stext26);
-        st27 = view.findViewById(R.id.stext27);
-        st28 = view.findViewById(R.id.stext28);
-        st29 = view.findViewById(R.id.stext29);
-        st30 = view.findViewById(R.id.states);
-        ct1 = view.findViewById(R.id.ctext1);
-        ct2 = view.findViewById(R.id.ctext2);
-        ct3 = view.findViewById(R.id.ctext3);
-        ct4 = view.findViewById(R.id.ctext4);
-        ct5 = view.findViewById(R.id.ctext5);
-        ct6 = view.findViewById(R.id.ctext6);
-        ct7 = view.findViewById(R.id.ctext7);
-        ct8 = view.findViewById(R.id.ctext8);
-        ct9 = view.findViewById(R.id.ctext9);
-        ct10 = view.findViewById(R.id.ctext10);
-        ct11 = view.findViewById(R.id.ctext11);
-        ct12 = view.findViewById(R.id.ctext12);
-        ct13 = view.findViewById(R.id.ctext13);
-        ct14 = view.findViewById(R.id.ctext14);
-        ct15 = view.findViewById(R.id.ctext15);
-        ct16 = view.findViewById(R.id.ctext16);
-        ct17 = view.findViewById(R.id.ctext17);
-        ct18 = view.findViewById(R.id.ctext18);
-        ct19 = view.findViewById(R.id.ctext19);
-        ct20 = view.findViewById(R.id.ctext20);
-        ct21 = view.findViewById(R.id.ctext21);
-        ct22 = view.findViewById(R.id.ctext22);
-        ct23 = view.findViewById(R.id.ctext23);
-        ct24 = view.findViewById(R.id.ctext24);
-        ct25 = view.findViewById(R.id.ctext25);
-        ct26 = view.findViewById(R.id.ctext26);
-        ct27 = view.findViewById(R.id.ctext27);
-        ct28 = view.findViewById(R.id.ctext28);
-        ct29 = view.findViewById(R.id.ctext29);
-        ct30 = view.findViewById(R.id.confirmed);
-        at1 = view.findViewById(R.id.atext1);
-        at2 = view.findViewById(R.id.atext2);
-        at3 = view.findViewById(R.id.atext3);
-        at4 = view.findViewById(R.id.atext4);
-        at5 = view.findViewById(R.id.atext5);
-        at6 = view.findViewById(R.id.atext6);
-        at7 = view.findViewById(R.id.atext7);
-        at8 = view.findViewById(R.id.atext8);
-        at9 = view.findViewById(R.id.atext9);
-        at10 = view.findViewById(R.id.atext10);
-        at11 = view.findViewById(R.id.atext11);
-        at12 = view.findViewById(R.id.atext12);
-        at13 = view.findViewById(R.id.atext13);
-        at14 = view.findViewById(R.id.atext14);
-        at15 = view.findViewById(R.id.atext15);
-        at16 = view.findViewById(R.id.atext16);
-        at17 = view.findViewById(R.id.atext17);
-        at18 = view.findViewById(R.id.atext18);
-        at19 = view.findViewById(R.id.atext19);
-        at20 = view.findViewById(R.id.atext20);
-        at21 = view.findViewById(R.id.atext21);
-        at22 = view.findViewById(R.id.atext22);
-        at23 = view.findViewById(R.id.atext23);
-        at24 = view.findViewById(R.id.atext24);
-        at25 = view.findViewById(R.id.atext25);
-        at26 = view.findViewById(R.id.atext26);
-        at27 = view.findViewById(R.id.atext27);
-        at28 = view.findViewById(R.id.atext28);
-        at29 = view.findViewById(R.id.atext29);
-        at30 = view.findViewById(R.id.active);
-        rt1 = view.findViewById(R.id.rtext1);
-        rt2 = view.findViewById(R.id.rtext2);
-        rt3 = view.findViewById(R.id.rtext3);
-        rt4 = view.findViewById(R.id.rtext4);
-        rt5 = view.findViewById(R.id.rtext5);
-        rt6 = view.findViewById(R.id.rtext6);
-        rt7 = view.findViewById(R.id.rtext7);
-        rt8 = view.findViewById(R.id.rtext8);
-        rt9 = view.findViewById(R.id.rtext9);
-        rt10 = view.findViewById(R.id.rtext10);
-        rt11 = view.findViewById(R.id.rtext11);
-        rt12 = view.findViewById(R.id.rtext12);
-        rt13 = view.findViewById(R.id.rtext13);
-        rt14 = view.findViewById(R.id.rtext14);
-        rt15 = view.findViewById(R.id.rtext15);
-        rt16 = view.findViewById(R.id.rtext16);
-        rt17 = view.findViewById(R.id.rtext17);
-        rt18 = view.findViewById(R.id.rtext18);
-        rt19 = view.findViewById(R.id.rtext19);
-        rt20 = view.findViewById(R.id.rtext20);
-        rt21 = view.findViewById(R.id.rtext21);
-        rt22 = view.findViewById(R.id.rtext22);
-        rt23 = view.findViewById(R.id.rtext23);
-        rt24 = view.findViewById(R.id.rtext24);
-        rt25 = view.findViewById(R.id.rtext25);
-        rt26 = view.findViewById(R.id.rtext26);
-        rt27 = view.findViewById(R.id.rtext27);
-        rt28 = view.findViewById(R.id.rtext28);
-        rt29 = view.findViewById(R.id.rtext29);
-        rt30 = view.findViewById(R.id.recovered);
-        dt1 = view.findViewById(R.id.dtext1);
-        dt2 = view.findViewById(R.id.dtext2);
-        dt3 = view.findViewById(R.id.dtext3);
-        dt4 = view.findViewById(R.id.dtext4);
-        dt5 = view.findViewById(R.id.dtext5);
-        dt6 = view.findViewById(R.id.dtext6);
-        dt7 = view.findViewById(R.id.dtext7);
-        dt8 = view.findViewById(R.id.dtext8);
-        dt9 = view.findViewById(R.id.dtext9);
-        dt10 = view.findViewById(R.id.dtext10);
-        dt11 = view.findViewById(R.id.dtext11);
-        dt12 = view.findViewById(R.id.dtext12);
-        dt13 = view.findViewById(R.id.dtext13);
-        dt14 = view.findViewById(R.id.dtext14);
-        dt15 = view.findViewById(R.id.dtext15);
-        dt16 = view.findViewById(R.id.dtext16);
-        dt17 = view.findViewById(R.id.dtext17);
-        dt18 = view.findViewById(R.id.dtext18);
-        dt19 = view.findViewById(R.id.dtext19);
-        dt20 = view.findViewById(R.id.dtext20);
-        dt21 = view.findViewById(R.id.dtext21);
-        dt22 = view.findViewById(R.id.dtext22);
-        dt23 = view.findViewById(R.id.dtext23);
-        dt24 = view.findViewById(R.id.dtext24);
-        dt25 = view.findViewById(R.id.dtext25);
-        dt26 = view.findViewById(R.id.dtext26);
-        dt27 = view.findViewById(R.id.dtext27);
-        dt28 = view.findViewById(R.id.dtext28);
-        dt29 = view.findViewById(R.id.dtext29);
-        dt30 = view.findViewById(R.id.deaths); */
+        getActivity().setTitle("Cases Of Corona");
+
         t1 = view.findViewById(R.id.table);
 //        TableLayout t1 = view.findViewById(R.id.table);
 
@@ -232,15 +87,15 @@ public class TableFragment extends Fragment {
 //        fetch_data process = new fetch_data();
 //        process.execute();
 
-        arrayList = new ArrayList<AllExistingData>();
-        addHeaders();
+        arrayList = new ArrayList<AllExistingData>(0);
+
+        //addHeaders();
         GetAllDataExistingTask getAllDataExistingTask = new GetAllDataExistingTask();
         getAllDataExistingTask.execute();
 
-
         //Returning the layout file after inflating
         //Change R.layout.tab1 in you classes
-        return inflater.inflate(R.layout.activity_tablefragment, container, false);
+        return view;
 
 
 // Write a message to the database
@@ -304,7 +159,7 @@ public class TableFragment extends Fragment {
             progressDialog.setMessage("Please Wait");
             progressDialog.setCancelable(false);
             progressDialog.show();
-            Log.d("123", "onPreExecute: No Error"+ 123);
+            Log.d("123", "onPreExecute: No Error" + 123);
 
         }
 
@@ -317,8 +172,7 @@ public class TableFragment extends Fragment {
             OkHttpClient client = new OkHttpClient();
             try {
                 Request request = new Request.Builder().url(searchAPI).build();
-                Response response = null;
-                response = client.newCall(request).execute();
+                Response response = client.newCall(request).execute();
 
                 if (!response.isSuccessful()) {
                     //  Object runOnUiThread;
@@ -342,12 +196,10 @@ public class TableFragment extends Fragment {
                         String active = jobject.getString("active");
                         String recovered = jobject.getString("recovered");
                         String deaths = jobject.getString("deaths");
-                        arrayList.add(new AllExistingData(states,confirmed,active,recovered,deaths));
+                        arrayList.add(new AllExistingData(states, confirmed, active, recovered, deaths));
+                        //Toast.makeText(getActivity().getApplicationContext(),""+arrayList.get(Integer.parseInt(states)),Toast.LENGTH_SHORT).show();
                     }
                 }
-                Log.d("123", "onPreExecute: No Error");
-                int s = arrayList.size();
-                System.out.println(s);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -360,87 +212,199 @@ public class TableFragment extends Fragment {
 
                 }
             });
+
+
             return responseBodyText;
 
         }
 
+        @SuppressLint("NewApi")
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             progressDialog.dismiss();
 
-            int allInputData = arrayList.size();
+            TableLayout stk = getView().findViewById(R.id.table);
+            TableRow tbrow0 = new TableRow(getActivity().getApplicationContext());
+            TextView tv0 = new TextView(getActivity().getApplicationContext());
+            tv0.setText(" States ");
+            tv0.setAllCaps(true);
+            tv0.setGravity(Gravity.END);
+            tv0.setWidth(2000);
+            tv0.setTextColor(getResources().getColor(R.color.headings));
+            tv0.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            // tv0.setTextColor(Integer.parseInt("#FFFFFF"));
+            tbrow0.addView(tv0);
+            TextView tv1 = new TextView(getActivity().getApplicationContext());
+            tv1.setText("    Confirmed ");
+            tv1.setTextColor(getResources().getColor(R.color.headings));
+            //  tv1.setTextColor(Integer.parseInt("#FFFFFF"));
+            tv1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            tv1.setAllCaps(true);
+            tv1.setWidth(380);
+            tv1.setGravity(Gravity.CENTER);
+            tbrow0.addView(tv1);
+            TextView tv2 = new TextView(getActivity().getApplicationContext());
+            tv2.setText(" Active ");
+            tv2.setAllCaps(true);
+            tv2.setTextColor(getResources().getColor(R.color.headings));
+            tv2.setWidth(300);
+            //tv2.setTextColor(Integer.parseInt("FFFFFF"));
+            tv2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            tv2.setGravity(Gravity.CENTER);
+            tbrow0.addView(tv2);
+            TextView tv3 = new TextView(getActivity().getApplicationContext());
+            tv3.setText(" Recovered ");
+            tv3.setWidth(380);
+            tv3.setAllCaps(true);
+            tv3.setTextColor(getResources().getColor(R.color.headings));
+            tv3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            tv3.setGravity(Gravity.CENTER);
+            tv3.setAllCaps(true);
+            tbrow0.addView(tv3);
+            TextView tv4 = new TextView(getActivity().getApplicationContext());
+            tv4.setText(" Deaths ");
+            tv4.setGravity(Gravity.CENTER);
+            tv4.setAllCaps(true);
+            tv4.setWidth(300);
+            tv4.setTextColor(getResources().getColor(R.color.headings));
+            tv4.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            tbrow0.addView(tv4);
+
+            stk.addView(tbrow0);
+
+            //int size = arrayList.size();
 
 
-            for (int i = 0; i < allInputData; i++) {
-                TableRow tr = new TableRow(getActivity());
-                tr.setLayoutParams(getLayoutParams());
+            try{
 
-               // String arr = arrayList.get(i).getStates();
-              //  t1.addView(tr,getLayoutParams());
-                tr.addView(getRowsTextView(i+1 , arrayList.get(i).getStates(), ContextCompat.getColor(getActivity(),R.color.cell_backgroung_color)));
-                tr.addView(getRowsTextView(i + allInputData , arrayList.get(i).getConfirmed(),  ContextCompat.getColor(getActivity(),R.color.cell_backgroung_color)));
-                tr.addView(getRowsTextView(i+allInputData , arrayList.get(i).getActive(), ContextCompat.getColor(getActivity(),R.color.cell_backgroung_color)));
-                tr.addView(getRowsTextView(i+allInputData , arrayList.get(i).getRecovered(),  ContextCompat.getColor(getActivity(),R.color.cell_backgroung_color)));
-                tr.addView(getRowsTextView(i+allInputData , arrayList.get(i).getDeaths(), ContextCompat.getColor(getActivity(),R.color.cell_backgroung_color)));
-                t1.addView(tr, gettb1LayoutParams());
 
-            }
+                int rows = arrayList.size();
+
+                for (i = 0; i < rows; i++) {
+                    TableRow tbrow = new TableRow(getActivity().getApplicationContext());
+                    TextView t0v = new TextView(getActivity().getApplicationContext());
+                    t0v.setText(" " + arrayList.get(i).getStates());
+                    t0v.setTextColor(getResources().getColor(R.color.set_backgroung_color));
+                    //t1v.setTextColor(Color.WHITE);
+                    t0v.setGravity(Gravity.END);
+                    t0v.setWidth(2000);
+                    tbrow.addView(t0v);
+                    TextView t2v = new TextView(getActivity().getApplicationContext());
+                    t2v.setText("    " + arrayList.get(i).getConfirmed());
+                    //t2v.setText(" " + arrayList.get(i).getConfirmed());
+                    t2v.setTextColor(getResources().getColor(R.color.set_backgroung_color));
+                    // t2v.setTextColor(Color.WHITE);
+                    t2v.setGravity(Gravity.CENTER);
+                    t2v.setWidth(380);
+                    tbrow.addView(t2v);
+                    TextView t3v = new TextView(getActivity().getApplicationContext());
+                    t3v.setText(" " + arrayList.get(i).getActive());
+                    t3v.setTextColor(getResources().getColor(R.color.set_backgroung_color));
+                    //t3v.setTextColor(Color.WHITE);
+                    t3v.setWidth(300);
+                    t3v.setGravity(Gravity.CENTER);
+                    tbrow.addView(t3v);
+                    TextView t4v = new TextView(getActivity().getApplicationContext());
+                    t4v.setText(" " + arrayList.get(i).getRecovered());
+
+                    //t4v.setText(" " + arrayList.get(i).getRecovered());
+                    //t4v.setTextColor(Color.WHITE);
+                    t4v.setTextColor(getResources().getColor(R.color.set_backgroung_color));
+                    t4v.setGravity(Gravity.CENTER);
+                    t4v.setWidth(380);
+                    tbrow.addView(t4v);
+                    TextView t5v = new TextView(getActivity().getApplicationContext());
+                    t5v.setText(" " + arrayList.get(i).getDeaths());
+                    //t5v.setText(" " + arrayList.get(i).getDeaths());
+                    //t4v.setTextColor(Color.WHITE);
+                    t5v.setTextColor(getResources().getColor(R.color.set_backgroung_color));
+                    t5v.setWidth(300);
+                    t5v.setGravity(Gravity.CENTER);
+                    tbrow.addView(t5v);
+
+                    stk.addView(tbrow);
+                }
+
+            }catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+            Toast.makeText(getActivity().getApplicationContext(),"Eror: "+e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+
+
+
+     /*     int allInputData = arrayList.size();
+
+              for (int i = 0; i < allInputData; i++) {
+                  TableRow tr = new TableRow(getActivity());
+                  tr.setLayoutParams(getLayoutParams());
+
+                  // String arr = arrayList.get(i).getStates();
+                  //  t1.addView(tr,getLayoutParams());
+                  tr.addView(getRowsTextView(0 , arrayList.get(i).getStates(), ContextCompat.getColor(getActivity(),R.color.set_backgroung_color)));
+                  tr.addView(getRowsTextView(0 , arrayList.get(i).getConfirmed(),  ContextCompat.getColor(getActivity(),R.color.set_backgroung_color)));
+                  tr.addView(getRowsTextView(0 , arrayList.get(i).getActive(), ContextCompat.getColor(getActivity(),R.color.set_backgroung_color)));
+                  tr.addView(getRowsTextView(0 , arrayList.get(i).getRecovered(),  ContextCompat.getColor(getActivity(),R.color.set_backgroung_color)));
+                  tr.addView(getRowsTextView(0 , arrayList.get(i).getDeaths(), ContextCompat.getColor(getActivity(),R.color.set_backgroung_color)));
+                  t1.addView(tr, gettb1LayoutParams());
+              } */
 
         }
 
-    }
-    private TextView getTextView(int id,String title, int bgColor){
-        TextView tv = new TextView(getActivity());
-        tv.setId(id);
-        tv.setText(title.toUpperCase());
-        //   tv.setTextColor(color);
-        tv.setPadding(40,40,40,40);
-        tv.setBackgroundColor(bgColor);
-        tv.setLayoutParams(getLayoutParams());
-        return tv;
+        }
+
+        private TextView getTextView(int id, String title, int bgColor) {
+            TextView tv = new TextView(getActivity());
+            tv.setId(id);
+            tv.setText(title.toUpperCase());
+            //   tv.setTextColor(color);
+            tv.setPadding(40, 40, 40, 40);
+            tv.setBackgroundColor(bgColor);
+            tv.setLayoutParams(getLayoutParams());
+            return tv;
+
+        }
+
+        private TextView getRowsTextView(int id, String title, int bgColor) {
+            TextView tv = new TextView(getActivity());
+            tv.setId(id);
+            tv.setText(title);
+            // tv.setTextColor(color);
+            tv.setPadding(40, 40, 40, 40);
+            tv.setBackgroundColor(bgColor);
+            tv.setLayoutParams(getLayoutParams());
+            return tv;
+        }
+
+        private TableRow.LayoutParams getLayoutParams() {
+            TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+                    TableRow.LayoutParams.WRAP_CONTENT);
+            params.setMargins(2, 0, 0, 2);
+            return params;
+        }
+
+        private TableLayout.LayoutParams gettb1LayoutParams() {
+            TableLayout.LayoutParams params = new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+            return params;
+        }
+
+
+        @SuppressLint("ResourceType")
+        public void addHeaders() {
+            TableRow tableRow = new TableRow(getActivity());
+            t1.setLayoutParams(getLayoutParams());
+
+            tableRow.addView(getTextView(0, "States", R.color.colorAccent));
+            tableRow.addView(getTextView(0, "Confirmed", R.color.colorAccent));
+            tableRow.addView(getTextView(0, "Active", R.color.colorAccent));
+            tableRow.addView(getTextView(0, "Recovered", R.color.colorAccent));
+            tableRow.addView(getTextView(0, "Deaths", R.color.colorAccent));
+
+            t1.addView(tableRow, gettb1LayoutParams());
+        }
 
     }
-    private TextView getRowsTextView (int id, String title, int bgColor){
-        TextView tv = new TextView(getActivity());
-        tv.setId(id);
-        tv.setText(title);
-        // tv.setTextColor(color);
-        tv.setPadding(40,40,40,40);
-        tv.setBackgroundColor(bgColor);
-        tv.setLayoutParams(getLayoutParams());
-        return tv;
-    }
 
-    private TableRow.LayoutParams getLayoutParams(){
-        TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                TableRow.LayoutParams.WRAP_CONTENT);
-        params.setMargins(2,0,0,2);
-        return params;
-    }
-
-    private TableLayout.LayoutParams gettb1LayoutParams(){
-        TableLayout.LayoutParams params = new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT);
-        return params;
-    }
-
-
-
-    @SuppressLint("ResourceType")
-    public void addHeaders(){
-        TableRow tableRow = new TableRow(getActivity());
-        t1.setLayoutParams(getLayoutParams());
-
-        tableRow.addView(getTextView(0, "States",R.color.colorAccent));
-        tableRow.addView(getTextView(0, "Confirmed",R.color.colorAccent));
-        tableRow.addView(getTextView(0, "Active",R.color.colorAccent));
-        tableRow.addView(getTextView(0, "Recovered",R.color.colorAccent));
-        tableRow.addView(getTextView(0, "Deaths",R.color.colorAccent));
-
-        t1.addView(tableRow,gettb1LayoutParams());
-    }
-
-}
 
 
 /*
